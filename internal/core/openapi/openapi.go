@@ -93,9 +93,9 @@ func (openapi *Openapi) buildRouter() *gin.Engine {
 	{
 		// TODO test
 		userGroup.POST("", openapi.user)
-		userGroup.PUT("/:id", openapi.updateUser)
-		userGroup.GET("/:id", openapi.userById)
-		userGroup.DELETE("/:id", openapi.removeUser)
+		userGroup.PUT("/:userId", openapi.updateUser)
+		userGroup.GET("/:userId", openapi.userById)
+		userGroup.DELETE("/:userId", openapi.removeUser)
 
 		// TODO envcd scopespace
 		userGroup.GET("/:userId/scopespace/:scopeSpaceId", openapi.scopeSpace)
@@ -111,12 +111,13 @@ func (openapi *Openapi) buildRouter() *gin.Engine {
 	}
 	envcdScopeSpace := v1.Group("/scopespace")
 	{
-		envcdScopeSpace.GET("/all")
+		envcdScopeSpace.GET("")
 
 	}
 	envcdDictionary := v1.Group("/dictionary")
 	{
-		envcdDictionary.GET("/all")
+		// pageable
+		envcdDictionary.GET("")
 	}
 	return router
 }
